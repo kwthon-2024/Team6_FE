@@ -1,3 +1,24 @@
 .bottom-menu-layout {
-  min-height: 100vh;
+  max-height: calc(100vh - 87px);
+  overflow-y: scroll;
+}
+
+/* Webkit 기반 브라우저용 스크롤바 커스텀 */
+.bottom-menu-layout::-webkit-scrollbar {
+  width: 5px;
+}
+
+.bottom-menu-layout::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.bottom-menu-layout::-webkit-scrollbar-thumb {
+  background-color: #888; /* 스크롤바 색상 */
+  border-radius: 10px;
+  border: 2px solid transparent; /* 스크롤바와 트랙 사이의 간격 */
+  transform: translateX(-0.5rem);
+}
+
+.bottom-menu-layout::-webkit-scrollbar-thumb:hover {
+  background-color: #555; /* 스크롤바에 마우스를 올렸을 때 색상 */
 }

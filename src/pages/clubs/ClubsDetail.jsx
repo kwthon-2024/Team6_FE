@@ -29,6 +29,9 @@ const ClubsDetail = () => {
             <button className="club-apply p-15-700 c-white">지원하러 가기</button>
           </div>
         </div>
+        <div className="club-description p-10-700 j-content-center a-items-center">
+          동아리 설명글
+        </div>
       </div>
     </div>
   );

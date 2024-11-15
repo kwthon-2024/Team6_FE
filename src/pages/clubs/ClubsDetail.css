@@ -23,6 +23,8 @@
 
 .clubs-detail .club-info .club-info-title {
   gap: 11px;
+
+  margin-bottom: 1.174vh;
 }
 
 .clubs-detail .club-info .club-thumbnail {
@@ -47,4 +49,16 @@
   background: #77212e;
 
   cursor: pointer;
+}
+
+.clubs-detail .club-info .club-description {
+  padding: 20px;
+
+  width: 350px;
+  height: 70px;
+  flex-shrink: 0;
+
+  box-sizing: border-box;
+  border-radius: 10px;
+  background: #eee;
 }

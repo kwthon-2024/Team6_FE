@@ -1,5 +1,23 @@
 .bottom-menu {
+  position: fixed;
+  bottom: 0;
+  z-index: 1000;
+
   padding: 17px 49px;
+
+  width: 393px;
+  height: 87px;
+
+  background: #fff;
+  box-sizing: border-box;
+}
+
+.bottom-menu img {
+  filter: invert(100%) sepia(0%) saturate(3398%) hue-rotate(10deg) brightness(112%) contrast(70%);
+}
+
+.bottom-menu img.selected {
+  filter: invert(15%) sepia(50%) saturate(3084%) hue-rotate(330deg) brightness(84%) contrast(90%);
 }
 
 .bottom-menu .graduate {

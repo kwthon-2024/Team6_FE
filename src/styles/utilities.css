@@ -36,3 +36,11 @@
   display: flex;
   align-items: flex-end;
 }
+
+.c-pointer {
+  cursor: pointer;
+}
+
+.c-default {
+  cursor: default;
+}
