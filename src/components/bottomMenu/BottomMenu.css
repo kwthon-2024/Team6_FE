@@ -1,0 +1,20 @@
+.bottom-menu {
+  padding: 17px 49px;
+}
+
+.bottom-menu .graduate {
+  position: relative;
+
+  width: 46px;
+}
+
+.bottom-menu .graduate img:nth-of-type(2) {
+  position: absolute;
+  top: 67.5%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.bottom-menu div p {
+  margin-top: 9px;
+}

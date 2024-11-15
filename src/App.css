@@ -11,7 +11,8 @@ a,
 li,
 input,
 button,
-label {
+label,
+hr {
   margin: 0;
 }
 
@@ -25,4 +26,6 @@ label {
 
 body {
   font-family: "Pretendard", sans-serif;
+  font-style: normal;
+  line-height: normal;
 }

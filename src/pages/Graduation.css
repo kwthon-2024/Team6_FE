@@ -1,0 +1,134 @@
+.graduation {
+  padding: 0 17px;
+  padding-top: 5.282vh;
+}
+
+.graduation .title {
+  margin: 0 20px;
+}
+
+.graduation .title p {
+  margin-bottom: 5px;
+}
+
+.graduation .common {
+  position: relative;
+
+  margin-top: 4.108vh;
+}
+
+.graduation .common .select-menu {
+  gap: 57px;
+
+  margin-bottom: 1px;
+  padding: 0 32px;
+}
+
+.graduation .select-p {
+  position: relative;
+  cursor: pointer;
+}
+
+.graduation .select-p p {
+  position: relative;
+  z-index: 1000;
+}
+
+.graduation .common .selected {
+  position: absolute;
+  transform: translate(-15px, -25%);
+
+  width: 92px;
+  height: 29px;
+  flex-shrink: 0;
+
+  border-radius: 6px;
+  border: 1px solid #77212e;
+  background: #77212e;
+
+  z-index: 100;
+}
+
+.graduation .select-menu-content {
+  padding: 13px 17px;
+
+  width: 359px;
+  flex-shrink: 0;
+
+  box-sizing: border-box;
+  border-radius: 6px;
+  border: 1px solid #77212e;
+}
+
+.graduation .common .select-menu-content hr {
+  border: 1px solid #d9d9d9;
+}
+
+.graduation .select-grade {
+  margin-bottom: 7px;
+  padding: 0 15px;
+}
+
+.graduation .select-grade div {
+  width: 1px;
+  height: 13px;
+
+  border-right: 1px solid #d9d9d9;
+}
+
+.graduation .select-grade-content {
+  margin-top: 13px;
+  margin-bottom: 10px;
+}
+
+.graduation .select-grade-content .subject {
+  gap: 13px;
+  flex-wrap: wrap;
+
+  margin-top: 7px;
+}
+
+.graduation .select-grade-content .subject p {
+  width: fit-content;
+}
+
+.graduation > hr {
+  margin: 0 17px;
+  margin-top: 3.286vh;
+  margin-bottom: 1.174vh;
+
+  border: 1px solid #d9d9d9;
+}
+
+.graduation .ABEEK-title {
+  margin-left: 11px;
+}
+
+.graduation .ABEEK {
+  margin-top: 4.108vh;
+}
+
+.graduation .ABEEK .select-menu {
+  gap: 75px;
+
+  margin-bottom: 1px;
+  padding: 0 17px;
+}
+
+.graduation .ABEEK .select-menu-content {
+  padding: 0 15px;
+  padding-top: 15px;
+  padding-bottom: 11px;
+}
+
+.graduation .ABEEK .select-grade {
+  padding: 0 27px;
+}
+
+.graduation .ABEEK .select-grade-content:last-child {
+  margin-bottom: 0;
+}
+
+.graduation .ABEEK .total-grade p {
+  margin-bottom: 2px;
+}

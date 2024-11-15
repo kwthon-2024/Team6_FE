@@ -1,10 +1,56 @@
-.p-16 {
-  font-size: 16px;
-  font-style: normal;
+.p-10-600 {
+  font-size: 10px;
   font-weight: 600;
-  line-height: normal;
+}
+
+.p-12-500 {
+  font-size: 12px;
+  font-weight: 500;
+}
+
+.p-14-500 {
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.p-14-600 {
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.p-14-700 {
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.p-16,
+.p-16-600 {
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.p-20-700 {
+  font-size: 20px;
+  font-weight: 700;
+}
+
+.p-32-700 {
+  font-size: 32px;
+  font-weight: 700;
 }
 
 .c-black {
   color: #000;
+}
+
+.c-white {
+  color: #fff;
+}
+
+.c-grey {
+  color: #d9d9d9;
+}
+
+.c-crimson-red {
+  color: #77212e;
 }

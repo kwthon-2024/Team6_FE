@@ -1,0 +1,5 @@
+.bottom-menu-layout {
+  padding: 17px 0;
+
+  min-height: calc(100vh - 34px);
+}
