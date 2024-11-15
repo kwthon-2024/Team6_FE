@@ -1,0 +1,21 @@
+.input-field p {
+  margin-bottom: 7px;
+}
+
+.input-field input {
+  padding: 0 16px;
+
+  width: 296px;
+  height: 40px;
+  flex-shrink: 0;
+
+  box-sizing: border-box;
+  border: none;
+  border-radius: 12px;
+  background: #fff;
+}
+
+.input-field input:focus {
+  border: 1px solid #77212e;
+  outline: none;
+}

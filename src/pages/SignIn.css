@@ -1,0 +1,28 @@
+.sign-in {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.sign-in .title-box {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  margin-top: 78px;
+
+  width: 286px;
+  height: 114px;
+  flex-shrink: 0;
+
+  background: #515151;
+}
+
+.sign-in .contents {
+  display: flex;
+  flex-direction: column;
+  gap: 17px;
+
+  margin-top: 13.498vh;
+  margin-bottom: 23.239vh;
+}
