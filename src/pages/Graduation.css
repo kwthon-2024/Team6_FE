@@ -26,12 +26,17 @@
 
 .graduation .select-p {
   position: relative;
+
   cursor: pointer;
 }
 
 .graduation .select-p p {
   position: relative;
+
   z-index: 1000;
+
+  /* 텍스트 줄바꿈 불허*/
+  white-space: nowrap;
 }
 
 .graduation .common .selected {
