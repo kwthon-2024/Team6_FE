@@ -3,7 +3,13 @@
 }
 
 .f-dir-column {
+  display: flex;
   flex-direction: column;
+}
+
+.j-content-start {
+  display: flex;
+  justify-content: flex-start;
 }
 
 .j-content-center {

@@ -3,9 +3,19 @@
   font-weight: 600;
 }
 
+.p-10-700 {
+  font-size: 10px;
+  font-weight: 700;
+}
+
 .p-12-500 {
   font-size: 12px;
   font-weight: 500;
+}
+
+.p-13-700 {
+  font-size: 13px;
+  font-weight: 700;
 }
 
 .p-14-500 {
@@ -23,14 +33,34 @@
   font-weight: 700;
 }
 
+.p-15-700 {
+  font-size: 15px;
+  font-weight: 700;
+}
+
+.p-16-500 {
+  font-size: 16px;
+  font-weight: 500;
+}
+
 .p-16,
 .p-16-600 {
   font-size: 16px;
   font-weight: 600;
 }
 
+.p-20-500 {
+  font-size: 20px;
+  font-weight: 500;
+}
+
 .p-20-700 {
   font-size: 20px;
+  font-weight: 700;
+}
+
+.p-24-700 {
+  font-size: 24px;
   font-weight: 700;
 }
 

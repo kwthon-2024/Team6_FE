@@ -1,0 +1,16 @@
+.small-button {
+  height: 25px;
+  padding: 4.5px 12.5px;
+
+  border-radius: 100px;
+  border: 1px solid #77212e;
+  background: #fff;
+  color: #000;
+
+  cursor: pointer;
+}
+
+.small-button.selected {
+  background: #77212e;
+  color: #fff;
+}

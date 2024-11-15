@@ -1,0 +1,67 @@
+.clubs {
+  padding: 0 21px;
+  padding-top: 6.455vh;
+}
+
+.clubs .category-buttons {
+  gap: 5px;
+  flex-wrap: wrap;
+
+  margin-top: 1.526vh;
+
+  width: 100%;
+}
+
+.clubs .club-list {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+
+  margin-top: 0.822vh;
+  margin-bottom: 2.23vh;
+}
+
+.clubs .club-list .club-thumbnail {
+  position: relative;
+
+  width: 110px;
+  height: 130px;
+
+  border-radius: 10px;
+  background: #eee;
+
+  cursor: pointer;
+}
+
+.clubs .club-list .club-thumbnail .club-member-recruit {
+  position: absolute;
+  top: 7px;
+  right: 7px;
+
+  width: 49px;
+  height: 18px;
+  flex-shrink: 0;
+
+  border-radius: 4px;
+  background: #77212e;
+}
+
+.clubs .club-event-title {
+  margin-bottom: 2.7vh;
+}
+
+.clubs .club-event {
+  gap: 10px;
+}
+
+.clubs .club-event-content {
+  padding: 20px;
+
+  width: 350px;
+  height: 70px;
+  flex-shrink: 0;
+
+  box-sizing: border-box;
+  border-radius: 10px;
+  background: #eee;
+}

@@ -2,6 +2,8 @@ import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 
 import Layout from "./layouts/Layout";
 import BottomMenu from "./layouts/BottomMenuLayout";
+import Clubs from "./pages/clubs/Clubs";
+import ClubsDetail from "./pages/clubs/ClubsDetail";
 import SignIn from "./pages/SignIn";
 import Graduation from "./pages/Graduation";
 
@@ -20,6 +22,8 @@ function App() {
             <Route index element={<SignIn />} />
             <Route path="/pages" element={<BottomMenu />}>
               <Route path="graduation" element={<Graduation />} />
+              <Route path="clubs" element={<Clubs />} />
+              <Route path="clubs/detail" element={<ClubsDetail />} />
             </Route>
           </Route>
         </Routes>
