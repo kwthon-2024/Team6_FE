@@ -7,7 +7,8 @@ import ClubsCalendar from './pages/clubs/ClubsCalendar';
 import ClubsDetail from './pages/clubs/ClubsDetail';
 import ClubEvDetail from './pages/ClubEvDetail';
 import ClubEvRegister from './pages/ClubEvRegister';
-import SignIn from './pages/SignIn';
+import SignUp from './pages/SignUp';
+import Login from './pages/Login';
 import Graduation from './pages/Graduation';
 import Roadmap from './pages/Roadmap';
 
@@ -23,7 +24,8 @@ function App() {
       <Router>
         <Routes>
           <Route path="/" element={<Layout />}>
-            <Route index element={<SignIn />} />
+          <Route path="/login" element={<Login />} /> 
+          <Route path="/signup" element={<SignUp />} /> 
             <Route path="/pages" element={<BottomMenu />}>
               <Route path="roadmap" element={<Roadmap />} />
               <Route path="graduation" element={<Graduation />} />
