@@ -21,6 +21,7 @@ const AddClub = () => {
       // Get Pre-signed URL for image_logo
       const logoUrlResponse = await axios.post("http://112.152.14.116:1116/add-club", {});
       const logoPresignedUrl = logoUrlResponse.data.url;
+      alert(logoPresignedUrl);
 
       // Upload image_logo
       await axios.put(logoPresignedUrl, imageLogoFile, {
@@ -33,6 +34,7 @@ const AddClub = () => {
       // Get Pre-signed URL for image_club
       const clubUrlResponse = await axios.post("http://112.152.14.116:1116/add-club", {});
       const clubPresignedUrl = clubUrlResponse.data.url;
+      alert(clubPresignedUrl);
 
       // Upload image_club
       await axios.put(clubPresignedUrl, imageClubFile, {
