@@ -6,7 +6,7 @@ function ClubEvDetail() {
       {/* 날짜 및 모집 태그 */}
       <div className="w-full flex items-center mb-2 space-x-2">
       <p className="text-md font-medium text-gray-900">2024년 11월 16일 (토)</p>
-      <span className="text-xs text-white bg-main01 rounded-sm px-3 py-1">
+      <span className="text-xs text-white bg-main01 rounded-md px-3 py-1">
         모집 중
       </span>
       </div>
@@ -16,16 +16,16 @@ function ClubEvDetail() {
 
       {/* 카테고리 */}
       <div className="flex justify-start space-x-2 w-full">
-        <button className="text-xs text-white bg-main01 rounded-sm px-3 py-1">
+        <button className="text-xs text-white bg-main01 rounded-md px-3 py-1">
           학술
         </button>
-        <button className="text-xs text-white bg-main01 rounded-sm px-3 py-1">
+        <button className="text-xs text-white bg-main01 rounded-md px-3 py-1">
           동아리1
         </button>
-        <button className="text-xs text-white bg-main01 rounded-sm px-3 py-1">
+        <button className="text-xs text-white bg-main01 rounded-md px-3 py-1">
           동아리2
         </button>
-        <button className="text-xs text-white bg-main01 rounded-sm px-3 py-1">
+        <button className="text-xs text-white bg-main01 rounded-md px-3 py-1">
           동아리3
         </button>
       </div>
