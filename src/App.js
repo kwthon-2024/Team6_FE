@@ -4,6 +4,7 @@ import Layout from "./layouts/Layout";
 import BottomMenu from "./layouts/BottomMenuLayout";
 import Clubs from "./pages/clubs/Clubs";
 import ClubsDetail from "./pages/clubs/ClubsDetail";
+import ClubEvDetail from "./pages/ClubEvDetail"; 
 import SignIn from "./pages/SignIn";
 import Graduation from "./pages/Graduation";
 
@@ -24,6 +25,7 @@ function App() {
               <Route path="graduation" element={<Graduation />} />
               <Route path="clubs" element={<Clubs />} />
               <Route path="clubs/detail" element={<ClubsDetail />} />
+              <Route path="clubs/detailEv" element={<ClubEvDetail />} />
             </Route>
           </Route>
         </Routes>
