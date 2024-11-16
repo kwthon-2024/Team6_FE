@@ -116,7 +116,11 @@ function Roadmap() {
   };
 
   const handleStepClick = (step) => {
-    setSelectedStep(step);
+    if (selectedStep === step) {
+      setSelectedStep('');
+    } else {
+      setSelectedStep(step);
+    }
   };
 
   return (
@@ -177,23 +181,43 @@ function Roadmap() {
               />
               {/* 버튼 배치 */}
               {roadmapSteps[selectedJob].map((step, index) => (
-                <button
-                  key={index}
-                  onClick={() => handleStepClick(step.name)}
-                  className={`absolute px-2 py-[0.5px] text-xs rounded-lg font-medium transition ${
-                    selectedStep === step.name
-                      ? 'bg-main01 text-white'
-                      : 'border border-main01 bg-white text-black'
-                  }`}
-                  style={{
-                    top: step.y,
-                    left: step.x,
-                    transform: 'translate(-50%, -50%)',
-                    whiteSpace: 'nowrap',
-                  }}
-                >
-                  {step.name}
-                </button>
+                <React.Fragment key={index}>
+                  <button
+                    key={index}
+                    onClick={() => handleStepClick(step.name)}
+                    className={`absolute px-2 py-[0.5px] text-xs rounded-lg font-medium transition ${
+                      selectedStep === step.name
+                        ? 'bg-main01 text-white'
+                        : 'border border-main01 bg-white text-black'
+                    }`}
+                    style={{
+                      top: step.y,
+                      left: step.x,
+                      transform: 'translate(-50%, -50%)',
+                      whiteSpace: 'nowrap',
+                      zIndex: 10,
+                    }}
+                  >
+                    {step.name}
+                  </button>
+
+                  {selectedStep === step.name && (
+                    <div
+                      className="absolute text-xs font-medium text-black bg-white"
+                      style={{
+                        top: step.y,
+                        left: `calc(${step.x} + 10%)`,
+                        transform: 'translate(0, -50%)',
+                        zIndex: 20,
+                        padding: '2px 4px',
+                        border: '1px solid #ccc',
+                        borderRadius: '4px',
+                      }}
+                    >
+                      인터랙티브미디어개론
+                    </div>
+                  )}
+                </React.Fragment>
               ))}
             </div>
           </div>
