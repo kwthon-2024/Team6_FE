@@ -1,59 +1,99 @@
-import React from 'react';
-import logo from '../assets/logo.png'; 
+import React, { useState } from 'react';
+import axios from 'axios';
+import logo from '../assets/logo.png';
 
 function SignUp() {
+  const [formData, setFormData] = useState({
+    user_id: '',
+    user_name: '',
+    user_email: '',
+    user_password: '',
+    department: '',
+    user_entry_year: '',
+  });
+
+  const handleChange = (e) => {
+    setFormData({ ...formData, [e.target.id]: e.target.value });
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    try {
+      const response = await axios.post('http://112.152.14.116:1116/register', formData, {
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+      });
+
+      if (response.status === 200) {
+        alert('회원가입이 성공했습니다!');
+        window.location.href = '/login'; 
+      }
+    } catch (error) {
+      console.error('회원가입 오류:', error);
+      alert('회원가입에 실패했습니다. 다시 시도해주세요.');
+    }
+  };
+
   return (
     <div className="min-h-screen flex flex-col justify-center items-center bg-white">
       <div className="mb-8">
         <img src={logo} alt="Logo" className="h-16" />
       </div>
 
-      <form className="w-4/5 max-w-md flex flex-col space-y-4">
-        <div>
-          <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-1">
-            이메일
-          </label>
-          <input
-            type="email"
-            id="email"
-            placeholder="이메일"
-            className="w-full p-3 rounded-md bg-gray-200 border border-gray-300 focus:outline-none focus:ring-1 focus:ring-main01"
-          />
-        </div>
-        <div>
-          <label htmlFor="username" className="block text-sm font-medium text-gray-700 mb-1">
-            아이디
-          </label>
-          <input
-            type="text"
-            id="username"
-            placeholder="아이디"
-            className="w-full p-3 rounded-md bg-gray-200 border border-gray-300 focus:outline-none focus:ring-1 focus:ring-main01"
-          />
-        </div>
-        <div>
-          <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-1">
-            이름
-          </label>
-          <input
-            type="text"
-            id="name"
-            placeholder="이름"
-            className="w-full p-3 rounded-md bg-gray-200 border border-gray-300 focus:outline-none focus:ring-1 focus:ring-main01"
-          />
-        </div>
-        <div>
-          <label htmlFor="password" className="block text-sm font-medium text-gray-700 mb-1">
-            비밀번호
-          </label>
-          <input
-            type="password"
-            id="password"
-            placeholder="비밀번호"
-            className="w-full p-3 rounded-md bg-gray-200 border border-gray-300 focus:outline-none focus:ring-1 focus:ring-main01"
-          />
-        </div>
-
+      <form className="w-4/5 max-w-md flex flex-col space-y-4" onSubmit={handleSubmit}>
+        <input
+          type="text"
+          id="user_id"
+          placeholder="아이디"
+          value={formData.user_id}
+          onChange={handleChange}
+          className="w-full p-3 rounded-md bg-gray-200 border border-gray-300 focus:outline-none focus:ring-1 focus:ring-main01"
+          required
+        />
+        <input
+          type="text"
+          id="user_name"
+          placeholder="이름"
+          value={formData.user_name}
+          onChange={handleChange}
+          className="w-full p-3 rounded-md bg-gray-200 border border-gray-300 focus:outline-none focus:ring-1 focus:ring-main01"
+          required
+        />
+        <input
+          type="email"
+          id="user_email"
+          placeholder="이메일"
+          value={formData.user_email}
+          onChange={handleChange}
+          className="w-full p-3 rounded-md bg-gray-200 border border-gray-300 focus:outline-none focus:ring-1 focus:ring-main01"
+          required
+        />
+        <input
+          type="password"
+          id="user_password"
+          placeholder="비밀번호"
+          value={formData.user_password}
+          onChange={handleChange}
+          className="w-full p-3 rounded-md bg-gray-200 border border-gray-300 focus:outline-none focus:ring-1 focus:ring-main01"
+          required
+        />
+        <input
+          type="text"
+          id="department"
+          placeholder="학과"
+          value={formData.department}
+          onChange={handleChange}
+          className="w-full p-3 rounded-md bg-gray-200 border border-gray-300 focus:outline-none focus:ring-1 focus:ring-main01"
+          required
+        />
+        <input
+          type="text"
+          id="user_entry_year"
+          placeholder="입학년도"
+          value={formData.user_entry_year}
+          onChange={handleChange}
+          className="w-full p-3 rounded-md bg-gray-200 border border-gray-300 focus:outline-none focus:ring-1 focus:ring-main01"
+          required
+        />
         <button
           type="submit"
           className="w-full bg-main01 text-white py-3 rounded-md font-bold text-lg hover:bg-main01 transition"
