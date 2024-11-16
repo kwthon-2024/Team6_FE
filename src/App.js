@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import Layout from "./layouts/Layout";
 import BottomMenu from "./layouts/BottomMenuLayout";
 import Clubs from "./pages/clubs/Clubs";
+import ClubsCalendar from "./pages/clubs/ClubsCalendar";
 import ClubsDetail from "./pages/clubs/ClubsDetail";
 import ClubEvDetail from "./pages/ClubEvDetail"; 
 import SignIn from "./pages/SignIn";
@@ -24,6 +25,7 @@ function App() {
             <Route path="/pages" element={<BottomMenu />}>
               <Route path="graduation" element={<Graduation />} />
               <Route path="clubs" element={<Clubs />} />
+              <Route path="clubs/calendar" element={<ClubsCalendar />} />
               <Route path="clubs/detail" element={<ClubsDetail />} />
               <Route path="clubs/detailEv" element={<ClubEvDetail />} />
             </Route>

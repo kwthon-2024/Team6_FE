@@ -113,7 +113,14 @@ const Clubs = () => {
 
       <div className="club-event-title j-content-between">
         <h1 className="p-20-700">동아리 행사</h1>
-        <img src={calender} alt="날짜"></img>
+        <img
+          src={calender}
+          alt="날짜"
+          className="c-pointer"
+          onClick={() => {
+            navigate("/pages/clubs/calendar");
+          }}
+        ></img>
       </div>
 
       <div className="club-event f-dir-column">
