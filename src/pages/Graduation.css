@@ -74,29 +74,6 @@
   padding: 0 15px;
 }
 
-.graduation .select-grade div {
-  width: 1px;
-  height: 13px;
-
-  border-right: 1px solid #d9d9d9;
-}
-
-.graduation .select-grade-content {
-  margin-top: 13px;
-  margin-bottom: 10px;
-}
-
-.graduation .select-grade-content .subject {
-  gap: 13px;
-  flex-wrap: wrap;
-
-  margin-top: 7px;
-}
-
-.graduation .select-grade-content .subject p {
-  width: fit-content;
-}
-
 .graduation > hr {
   margin: 0 17px;
   margin-top: 3.286vh;
@@ -124,6 +101,21 @@
   padding: 0 15px;
   padding-top: 15px;
   padding-bottom: 11px;
+}
+
+.graduation .ABEEK .selected {
+  position: absolute;
+  transform: translate(-11.5px, -25%);
+
+  width: 109px;
+  height: 29px;
+  flex-shrink: 0;
+
+  border-radius: 6px;
+  border: 1px solid #77212e;
+  background: #77212e;
+
+  z-index: 100;
 }
 
 .graduation .ABEEK .select-grade {
