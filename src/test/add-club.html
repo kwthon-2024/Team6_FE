@@ -4,6 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Add Club</title>
+    <!-- Axios 라이브러리 추가 -->
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
   </head>
   <body>
@@ -19,12 +20,7 @@
       <input type="text" id="instagram" name="instagram" required /><br /><br />
 
       <label for="image_logo">Image Logo:</label>
-      <input
-        type="text"
-        id="image_logo"
-        name="image_logo"
-        required
-      /><br /><br />
+      <input type="file" id="image_logo" name="image_logo" accept="image/*" required /><br /><br />
 
       <label for="joinable">Joinable:</label>
       <input type="text" id="joinable" name="joinable" required /><br /><br />
@@ -33,43 +29,69 @@
       <input type="number" id="members" name="members" required /><br /><br />
 
       <label for="image_club">Image Club:</label>
-      <input
-        type="text"
-        id="image_club"
-        name="image_club"
-        required
-      /><br /><br />
+      <input type="file" id="image_club" name="image_club" accept="image/*" required /><br /><br />
 
       <button type="submit">Add Club</button>
     </form>
 
     <script>
-      const form = document.getElementById('addClubForm');
+      const form = document.getElementById("addClubForm");
 
-      form.addEventListener('submit', async (event) => {
+      form.addEventListener("submit", async (event) => {
         event.preventDefault(); // 기본 폼 제출 동작 방지
 
         // 폼 데이터 가져오기
-        const data = {
-          area: document.getElementById('area').value,
-          club_name: document.getElementById('club_name').value,
-          instagram: document.getElementById('instagram').value,
-          image_logo: document.getElementById('image_logo').value,
-          joinable: document.getElementById('joinable').value,
-          members: parseInt(document.getElementById('members').value, 10),
-          image_club: document.getElementById('image_club').value,
-        };
+        const area = document.getElementById("area").value;
+        const club_name = document.getElementById("club_name").value;
+        const instagram = document.getElementById("instagram").value;
+        const joinable = document.getElementById("joinable").value;
+        const members = parseInt(document.getElementById("members").value, 10);
+
+        // 이미지 파일 객체 가져오기
+        const imageLogoFile = document.getElementById("image_logo").files[0];
+        const imageClubFile = document.getElementById("image_club").files[0];
 
         try {
+          // 백엔드에서 image_logo용 Pre-signed URL 가져오기
+          const logoUrlResponse = await axios.post("http://112.152.14.116:1116/add-club", {});
+          const logoPresignedUrl = logoUrlResponse.data.url;
+
+          // image_logo 업로드
+          await axios.put(logoPresignedUrl, imageLogoFile, {
+            headers: {
+              "Content-Type": imageLogoFile.type,
+            },
+          });
+          const imageLogoUrl = logoPresignedUrl.split("?")[0]; // 업로드된 이미지의 URL
+
+          // 백엔드에서 image_club용 Pre-signed URL 가져오기
+          const clubUrlResponse = await axios.post("http://112.152.14.116:1116/add-club", {});
+          const clubPresignedUrl = clubUrlResponse.data.url;
+
+          // image_club 업로드
+          await axios.put(clubPresignedUrl, imageClubFile, {
+            headers: {
+              "Content-Type": imageClubFile.type,
+            },
+          });
+          const imageClubUrl = clubPresignedUrl.split("?")[0]; // 업로드된 이미지의 URL
+
+          // 모든 데이터를 모아서 서버에 전송
+          const data = {
+            area,
+            club_name,
+            instagram,
+            image_logo: imageLogoUrl,
+            joinable,
+            members,
+            image_club: imageClubUrl,
+          };
+
           // Axios를 사용하여 POST 요청 전송
-          const response = await axios.post(
-            'http://http://112.152.14.116:1116/add-club',
-            data
-          );
-          alert('Club added successfully!');
-          console.log(response.data);
+          const response = await axios.post("http://112.152.14.116:1116/add-club", data);
+          alert("Club added successfully!");
         } catch (error) {
-          alert('An error occurred while adding the club.');
+          alert(error);
           console.error(error);
         }
       });

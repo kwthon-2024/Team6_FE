@@ -18,6 +18,7 @@ import "./styles/text.css";
 import "./styles/utilities.css";
 
 import "@fontsource/pretendard";
+import AddClub from "./test/AddClub";
 
 function App() {
   return (
@@ -38,6 +39,7 @@ function App() {
               <Route path="clubs/registerEv" element={<ClubEvRegister />} />
             </Route>
           </Route>
+          <Route path="/test/addclub" element={<AddClub />} />
         </Routes>
       </Router>
     </div>
