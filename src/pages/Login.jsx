@@ -23,7 +23,7 @@ function Login() {
         const { access_token } = response.data;
         localStorage.setItem('access_token', access_token); // 로컬 스토리지에 토큰 저장
         alert('로그인 성공!');
-        window.location.href = '/pages/graduation'; 
+        window.location.href = '/pages/graduation';
       }
     } catch (error) {
       console.error('로그인 오류:', error);
@@ -38,24 +38,30 @@ function Login() {
       </div>
 
       <form className="w-4/5 max-w-md flex flex-col space-y-4" onSubmit={handleSubmit}>
-        <input
-          type="text"
-          id="user_id"
-          placeholder="아이디"
-          value={formData.user_id}
-          onChange={handleChange}
-          className="w-full p-3 rounded-md bg-gray-200 border border-gray-200 focus:outline-none focus:ring-1 focus:ring-main01"
-          required
-        />
-        <input
-          type="password"
-          id="password"
-          placeholder="비밀번호"
-          value={formData.password}
-          onChange={handleChange}
-          className="w-full p-3 rounded-md bg-gray-200 border border-gray-200 focus:outline-none focus:ring-1 focus:ring-main01"
-          required
-        />
+        <div className="flex flex-col space-y-2">
+          <label htmlFor="user_id" className="text-sm font-medium text-gray-700">아이디</label>
+          <input
+            type="text"
+            id="user_id"
+            placeholder="아이디"
+            value={formData.user_id}
+            onChange={handleChange}
+            className="w-full p-3 rounded-md bg-gray-200 border border-gray-300 focus:outline-none focus:ring-1 focus:ring-main01"
+            required
+          />
+        </div>
+        <div className="flex flex-col space-y-2">
+          <label htmlFor="password" className="text-sm font-medium text-gray-700">비밀번호</label>
+          <input
+            type="password"
+            id="password"
+            placeholder="비밀번호"
+            value={formData.password}
+            onChange={handleChange}
+            className="w-full p-3 rounded-md bg-gray-200 border border-gray-300 focus:outline-none focus:ring-1 focus:ring-main01"
+            required
+          />
+        </div>
         <button
           type="submit"
           className="w-full bg-main01 text-white py-3 rounded-md font-bold text-lg hover:bg-main01 transition"
