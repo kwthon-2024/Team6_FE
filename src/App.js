@@ -6,6 +6,7 @@ import Clubs from "./pages/clubs/Clubs";
 import ClubsCalendar from "./pages/clubs/ClubsCalendar";
 import ClubsDetail from "./pages/clubs/ClubsDetail";
 import ClubEvDetail from "./pages/ClubEvDetail"; 
+import ClubEvRegister from "./pages/ClubEvRegister"
 import SignIn from "./pages/SignIn";
 import Graduation from "./pages/Graduation";
 
@@ -28,6 +29,7 @@ function App() {
               <Route path="clubs/calendar" element={<ClubsCalendar />} />
               <Route path="clubs/detail" element={<ClubsDetail />} />
               <Route path="clubs/detailEv" element={<ClubEvDetail />} />
+              <Route path="clubs/registerEv" element={<ClubEvRegister />} />
             </Route>
           </Route>
         </Routes>
