@@ -19,7 +19,10 @@ const AddClub = () => {
 
     try {
       // Get Pre-signed URL for image_logo
-      const logoUrlResponse = await axios.post("http://112.152.14.116:1116/add-club", {});
+      const logoUrlResponse = await axios.post(
+        "http://112.152.14.116:1116/generate-presigned-url",
+        {}
+      );
       const logoPresignedUrl = logoUrlResponse.data.url;
       alert(logoPresignedUrl);
 
@@ -32,7 +35,10 @@ const AddClub = () => {
       const imageLogoUrl = logoPresignedUrl.split("?")[0];
 
       // Get Pre-signed URL for image_club
-      const clubUrlResponse = await axios.post("http://112.152.14.116:1116/add-club", {});
+      const clubUrlResponse = await axios.post(
+        "http://112.152.14.116:1116/generate-presigned-url",
+        {}
+      );
       const clubPresignedUrl = clubUrlResponse.data.url;
       alert(clubPresignedUrl);
 
