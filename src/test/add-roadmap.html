@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Add Roadmap</title>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+  </head>
+  <body>
+    <h1>Add Roadmap</h1>
+    <form id="addRoadmapForm">
+      <label for="area_name">Area Name:</label>
+      <input type="text" id="area_name" name="area_name" required /><br /><br />
+
+      <h3>Todos</h3>
+      <div id="todosContainer">
+        <!-- 새로운 Todo 블록이 여기에 추가됩니다 -->
+      </div>
+      <button type="button" id="addTodoBtn">Add Todo</button><br /><br />
+      <button type="submit">Add Roadmap</button>
+    </form>
+
+    <script>
+      const addRoadmapForm = document.getElementById('addRoadmapForm');
+      const todosContainer = document.getElementById('todosContainer');
+
+      // Add Todo 버튼 클릭 시 실행
+      document.getElementById('addTodoBtn').addEventListener('click', () => {
+        const todoDiv = document.createElement('div');
+        todoDiv.classList.add('todo');
+        todoDiv.innerHTML = `
+        <label for="item">Item:</label>
+        <input type="text" class="item" required /><br />
+
+        <h4>Lectures</h4>
+        <div class="lecturesContainer">
+          <!-- 새로운 Lecture 블록이 여기에 추가됩니다 -->
+        </div>
+        <button type="button" class="addLectureBtn">Add Lecture</button><br /><br />
+      `;
+        todosContainer.appendChild(todoDiv);
+
+        // Add Lecture 버튼 이벤트 추가 (각 Todo 안에 개별적으로 작동)
+        todoDiv
+          .querySelector('.addLectureBtn')
+          .addEventListener('click', () => {
+            const lectureDiv = document.createElement('div');
+            lectureDiv.classList.add('lecture');
+            lectureDiv.innerHTML = `
+          <label for="lec_name">Lecture Name:</label>
+          <input type="text" class="lec_name" required /><br />
+        `;
+            todoDiv.querySelector('.lecturesContainer').appendChild(lectureDiv);
+          });
+      });
+
+      // 폼 제출 처리
+      addRoadmapForm.addEventListener('submit', async (event) => {
+        event.preventDefault();
+
+        const todos = [];
+        document.querySelectorAll('.todo').forEach((todo) => {
+          const lectures = [];
+          todo.querySelectorAll('.lecture').forEach((lecture) => {
+            lectures.push({
+              lec_name: lecture.querySelector('.lec_name').value,
+            });
+          });
+          todos.push({
+            item: todo.querySelector('.item').value,
+            lectures,
+          });
+        });
+
+        const data = {
+          area_name: document.getElementById('area_name').value,
+          todos,
+        };
+
+        try {
+          const response = await axios.post(
+            'http://http://112.152.14.116:1116/add-roadmap',
+            data
+          );
+          alert('Roadmap added successfully!');
+          console.log(response.data);
+        } catch (error) {
+          alert('An error occurred while adding the roadmap.');
+          console.error(error);
+        }
+      });
+    </script>
+  </body>
+</html>
