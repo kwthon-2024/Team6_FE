@@ -11,6 +11,7 @@ import SignUp from './pages/SignUp';
 import Login from './pages/Login';
 import Graduation from './pages/Graduation';
 import Roadmap from './pages/Roadmap';
+import GraduationKlas from './pages/GraduationKlas';
 
 import './App.css';
 import './styles/text.css';
@@ -24,10 +25,11 @@ function App() {
       <Router>
         <Routes>
           <Route path="/" element={<Layout />}>
-          <Route path="/login" element={<Login />} /> 
-          <Route path="/signup" element={<SignUp />} /> 
+            <Route path="/login" element={<Login />} />
+            <Route path="/signup" element={<SignUp />} />
             <Route path="/pages" element={<BottomMenu />}>
               <Route path="roadmap" element={<Roadmap />} />
+              <Route path="graduationklas" element={<GraduationKlas />} />
               <Route path="graduation" element={<Graduation />} />
               <Route path="clubs" element={<Clubs />} />
               <Route path="clubs/calendar" element={<ClubsCalendar />} />
