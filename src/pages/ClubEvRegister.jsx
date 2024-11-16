@@ -1,28 +1,39 @@
-import React, { useState, useRef } from 'react';
+import React, { useState } from 'react';
 
 function ClubEvRegister() {
   const [title, setTitle] = useState('');
   const [description, setDescription] = useState('');
-  const [isModalOpen, setIsModalOpen] = useState(false); // 등록 모달 상태
-  const [isClubModalOpen, setIsClubModalOpen] = useState(false); // 동아리 선택 모달 상태
-  const [selectedClub, setSelectedClub] = useState(null);
-  const [selectedImage, setSelectedImage] = useState(null); // 업로드된 이미지 상태
-  const descriptionRef = useRef(null);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isClubModalOpen, setIsClubModalOpen] = useState(false);
+  const [selectedClubs, setSelectedClubs] = useState([]); // 선택된 동아리들
+  const [selectedCategory, setSelectedCategory] = useState(null); // 선택된 카테고리
+  const [selectedImage, setSelectedImage] = useState(null);
 
-  const handleDescriptionChange = (e) => {
-    setDescription(e.target.value);
-    descriptionRef.current.style.height = 'auto';
-    descriptionRef.current.style.height = `${descriptionRef.current.scrollHeight}px`;
+  const categories = {
+    공연예술: ['합창단', '연극반', '댄스팀'],
+    문화: ['문학회', '사진동아리', '영화제작'],
+    체육: ['축구팀', '농구팀', '배드민턴'],
+    학술: ['프로그래밍', '기술개발', '스터디'],
+  };
+
+  const handleCategoryClick = (category) => {
+    setSelectedCategory(category); // 카테고리를 선택
   };
 
   const handleClubClick = (club) => {
-    setSelectedClub(club); // 동아리 선택
-    setIsClubModalOpen(false); // 동아리 모달 닫기
+    if (!selectedClubs.includes(club)) {
+      setSelectedClubs([...selectedClubs, club]); // 동아리를 선택 목록에 추가
+    }
+    setIsClubModalOpen(false); // 모달 닫기
   };
 
-  const handleClubDelete = () => {
-    setSelectedClub(null); // 동아리 선택 해제
-    setIsClubModalOpen(true); // 동아리 모달 다시 열기
+  const handleClubDelete = (club) => {
+    setSelectedClubs(selectedClubs.filter((c) => c !== club)); // 선택된 동아리 삭제
+  };
+
+  const handleCategoryDelete = () => {
+    setSelectedCategory(null); // 카테고리 선택 해제
+    setSelectedClubs([]); // 하위 동아리 초기화
   };
 
   const handleImageUpload = (e) => {
@@ -41,35 +52,36 @@ function ClubEvRegister() {
     setIsModalOpen(false);
   };
 
-  const categories = {
-    공연예술: ['합창단', '연극반', '댄스팀'],
-    문화: ['문학회', '사진동아리', '영화제작'],
-    체육: ['축구팀', '농구팀', '배드민턴'],
-    학술: ['프로그래밍', '기술개발', '스터디'],
-  };
-
   return (
     <div className="bg-white min-h-screen p-4 flex flex-col items-start relative">
       <h1 className="text-lg font-bold text-gray-900 mb-2">동아리 행사 등록</h1>
 
       {/* 버튼 그룹 */}
-      <div className="flex space-x-2 mb-4">
-        {selectedClub ? (
+      <div className="flex space-x-2 mb-4 flex-wrap">
+        {/* 카테고리 및 동아리 표시 */}
+        {selectedCategory && (
           <button
             className="flex items-center space-x-2 text-sm rounded-full px-3 bg-main01 text-white font-semibold"
-            onClick={handleClubDelete} // 버튼 클릭 시 삭제
+            onClick={handleCategoryDelete}
           >
-            <span>{selectedClub}</span>
+            <span>{selectedCategory}</span>
             <span className="ml-2 text-lg font-semibold">×</span>
           </button>
-        ) : (
+        )}
+        {selectedClubs.map((club, index) => (
           <button
-            onClick={() => setIsClubModalOpen(true)} // 동아리 모달 열기
-            className={`text-sm rounded-full px-3 py-1 ${
-              isClubModalOpen
-                ? 'bg-white font-semibold text-main01 outline outline-2 outline-main01'
-                : 'bg-gray-100 font-semibold text-gray-700'
-            }`}
+            key={index}
+            className="flex items-center space-x-2 text-sm rounded-full px-3 bg-main01 text-white font-semibold mb-2"
+            onClick={() => handleClubDelete(club)}
+          >
+            <span>{club}</span>
+            <span className="ml-2 text-lg font-semibold">×</span>
+          </button>
+        ))}
+        {!selectedCategory && (
+          <button
+            onClick={() => setIsClubModalOpen(true)}
+            className="text-sm rounded-full px-3 bg-gray-100 font-semibold text-gray-700 py-1"
           >
             + 동아리 선택
           </button>
@@ -93,9 +105,8 @@ function ClubEvRegister() {
       <div className="w-full mb-4">
         <label className="block text-sm font-medium text-gray-700 mb-1">행사 설명</label>
         <textarea
-          ref={descriptionRef}
           value={description}
-          onChange={handleDescriptionChange}
+          onChange={(e) => setDescription(e.target.value)}
           placeholder="행사 설명"
           className="w-full border-b border-gray-300 p-2 resize-none overflow-hidden focus:outline-none focus:border-main01"
           style={{ minHeight: '96px' }}
@@ -151,7 +162,7 @@ function ClubEvRegister() {
                 취소
               </button>
               <button
-                className="w-1/2 py-2 text-main01 font-semibold  mt-1"
+                className="w-1/2 py-2 text-main01 font-semibold mt-1"
                 onClick={handleRegister}
               >
                 등록
@@ -163,7 +174,7 @@ function ClubEvRegister() {
 
       {/* 동아리 선택 모달 */}
       {isClubModalOpen && (
-        <div className="absolute top-24 left-0 flex justify-center items-center">
+        <div className="absolute top-24 left-0 flex justify-center items-center w-full">
           <div className="bg-gray-100 max-w-sm w-full p-6 rounded-lg shadow-sm relative">
             <button
               onClick={() => setIsClubModalOpen(false)}
@@ -180,17 +191,36 @@ function ClubEvRegister() {
               />
             </div>
 
-            <div className="flex flex-wrap gap-2">
-              {['공연예술', '문화', '체육 1', '체육 2', '학술', '학술1', '학술2'].map((club, index) => (
-                <button
-                  key={index}
-                  onClick={() => handleClubClick(club)}
-                  className="text-sm bg-white border border-main01 rounded-full px-3 py-1 hover:bg-main01 hover:text-white transition-colors"
-                >
-                  {club}
-                </button>
-              ))}
-            </div>
+            {!selectedCategory ? (
+              <div className="flex flex-wrap gap-2">
+                {Object.keys(categories).map((category, index) => (
+                  <button
+                    key={index}
+                    onClick={() => handleCategoryClick(category)}
+                    className="text-sm bg-white border border-main01 rounded-full px-3 hover:bg-main01 hover:text-white transition-colors"
+                  >
+                    {category}
+                  </button>
+                ))}
+              </div>
+            ) : (
+              <div>
+                <h2 className="text-md font-semibold mb-2">
+                  {selectedCategory} 동아리
+                </h2>
+                <div className="flex flex-wrap gap-2">
+                  {categories[selectedCategory].map((club, index) => (
+                    <button
+                      key={index}
+                      onClick={() => handleClubClick(club)}
+                      className="text-sm bg-white border border-main01 rounded-full px-3 py-1 hover:bg-main01 hover:text-white transition-colors"
+                    >
+                      {club}
+                    </button>
+                  ))}
+                </div>
+              </div>
+            )}
           </div>
         </div>
       )}
