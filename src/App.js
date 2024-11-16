@@ -1,18 +1,19 @@
-import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 
-import Layout from "./layouts/Layout";
-import BottomMenu from "./layouts/BottomMenuLayout";
-import Clubs from "./pages/clubs/Clubs";
-import ClubsDetail from "./pages/clubs/ClubsDetail";
-import ClubEvDetail from "./pages/ClubEvDetail"; 
-import SignIn from "./pages/SignIn";
-import Graduation from "./pages/Graduation";
+import Layout from './layouts/Layout';
+import BottomMenu from './layouts/BottomMenuLayout';
+import Clubs from './pages/clubs/Clubs';
+import ClubsDetail from './pages/clubs/ClubsDetail';
+import ClubEvDetail from './pages/ClubEvDetail';
+import SignIn from './pages/SignIn';
+import Graduation from './pages/Graduation';
+import Roadmap from './pages/Roadmap';
 
-import "./App.css";
-import "./styles/text.css";
-import "./styles/utilities.css";
+import './App.css';
+import './styles/text.css';
+import './styles/utilities.css';
 
-import "@fontsource/pretendard";
+import '@fontsource/pretendard';
 
 function App() {
   return (
@@ -22,6 +23,7 @@ function App() {
           <Route path="/" element={<Layout />}>
             <Route index element={<SignIn />} />
             <Route path="/pages" element={<BottomMenu />}>
+              <Route path="roadmap" element={<Roadmap />} />
               <Route path="graduation" element={<Graduation />} />
               <Route path="clubs" element={<Clubs />} />
               <Route path="clubs/detail" element={<ClubsDetail />} />
