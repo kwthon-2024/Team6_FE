@@ -1,8 +1,10 @@
-import React, { useState } from 'react';
+import React, { useState } from "react";
+
+import ClubEvCalender from "../components/clubEvCalendar/ClubEvCalendar";
 
 function ClubEvRegister() {
-  const [title, setTitle] = useState('');
-  const [description, setDescription] = useState('');
+  const [title, setTitle] = useState("");
+  const [description, setDescription] = useState("");
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isClubModalOpen, setIsClubModalOpen] = useState(false);
   const [selectedClubs, setSelectedClubs] = useState([]); // 선택된 동아리들
@@ -10,11 +12,15 @@ function ClubEvRegister() {
   const [selectedImage, setSelectedImage] = useState(null);
 
   const categories = {
-    공연예술: ['합창단', '연극반', '댄스팀'],
-    문화: ['문학회', '사진동아리', '영화제작'],
-    체육: ['축구팀', '농구팀', '배드민턴'],
-    학술: ['프로그래밍', '기술개발', '스터디'],
+    공연예술: ["합창단", "연극반", "댄스팀"],
+    문화: ["문학회", "사진동아리", "영화제작"],
+    체육: ["축구팀", "농구팀", "배드민턴"],
+    학술: ["프로그래밍", "기술개발", "스터디"],
   };
+
+  const [showCalendar, setShowCalendar] = useState(false);
+  const [startDate, setStartDate] = useState(null);
+  const [endDate, setEndDate] = useState(null);
 
   const handleCategoryClick = (category) => {
     setSelectedCategory(category); // 카테고리를 선택
@@ -48,12 +54,15 @@ function ClubEvRegister() {
   };
 
   const handleRegister = () => {
-    alert('행사가 등록되었습니다!');
+    alert("행사가 등록되었습니다!");
     setIsModalOpen(false);
   };
 
   return (
-    <div className="bg-white min-h-screen p-4 flex flex-col items-start relative">
+    <div
+      className="bg-white min-h-screen p-4 flex flex-col items-start relative"
+      style={{ position: "relative" }}
+    >
       <h1 className="text-lg font-bold text-gray-900 mb-2">동아리 행사 등록</h1>
 
       {/* 버튼 그룹 */}
@@ -86,8 +95,15 @@ function ClubEvRegister() {
             + 동아리 선택
           </button>
         )}
-        <button className="bg-gray-100 font-semibold text-gray-700 text-sm rounded-full px-3 py-1">
-          + 일정 추가
+        <button
+          className="bg-gray-100 font-semibold text-gray-700 text-sm rounded-full px-3 py-1"
+          onClick={() => {
+            setShowCalendar(true);
+          }}
+        >
+          {!startDate && !endDate
+            ? "+ 일정 추가"
+            : `${startDate || "0000-00-00"} ~ ${endDate || "0000-00-00"}`}
         </button>
       </div>
 
@@ -109,24 +125,17 @@ function ClubEvRegister() {
           onChange={(e) => setDescription(e.target.value)}
           placeholder="행사 설명"
           className="w-full border-b border-gray-300 p-2 resize-none overflow-hidden focus:outline-none focus:border-main01"
-          style={{ minHeight: '96px' }}
+          style={{ minHeight: "96px" }}
         ></textarea>
       </div>
 
       {/* 사진 업로드 */}
       <div className="w-full h-72 flex items-center justify-center bg-gray-300 mb-4 relative">
         {selectedImage ? (
-          <img
-            src={selectedImage}
-            alt="Uploaded Preview"
-            className="w-full h-full object-cover"
-          />
+          <img src={selectedImage} alt="Uploaded Preview" className="w-full h-full object-cover" />
         ) : (
           <>
-            <label
-              htmlFor="imageUpload"
-              className="text-gray-500 text-3xl cursor-pointer"
-            >
+            <label htmlFor="imageUpload" className="text-gray-500 text-3xl cursor-pointer">
               +
             </label>
             <input
@@ -152,7 +161,7 @@ function ClubEvRegister() {
       {isModalOpen && (
         <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-50">
           <div className="bg-white w-72 h-36 rounded-md shadow-lg p-6 text-center">
-            <h2 className="text-md font-semibold mb-2">{title || '행사'}</h2>
+            <h2 className="text-md font-semibold mb-2">{title || "행사"}</h2>
             <p className="text-md text-gray-700 mb-6">행사를 등록하시겠습니까?</p>
             <div className="border-t border-gray-300 flex">
               <button
@@ -205,9 +214,7 @@ function ClubEvRegister() {
               </div>
             ) : (
               <div>
-                <h2 className="text-md font-semibold mb-2">
-                  {selectedCategory} 동아리
-                </h2>
+                <h2 className="text-md font-semibold mb-2">{selectedCategory} 동아리</h2>
                 <div className="flex flex-wrap gap-2">
                   {categories[selectedCategory].map((club, index) => (
                     <button
@@ -223,6 +230,15 @@ function ClubEvRegister() {
             )}
           </div>
         </div>
+      )}
+
+      {/* 캘린더 */}
+      {showCalendar && (
+        <ClubEvCalender
+          setStartDate={setStartDate}
+          setEndDate={setEndDate}
+          setShowCalendar={setShowCalendar}
+        />
       )}
     </div>
   );

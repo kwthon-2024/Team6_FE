@@ -13,6 +13,16 @@
   font-weight: 500;
 }
 
+.p-13-400 {
+  font-size: 13px;
+  font-weight: 400;
+}
+
+.p-13-600 {
+  font-size: 13px;
+  font-weight: 600;
+}
+
 .p-13-700 {
   font-size: 13px;
   font-weight: 700;
@@ -46,6 +56,11 @@
 .p-16-600 {
   font-size: 16px;
   font-weight: 600;
+}
+
+.p-16-700 {
+  font-size: 16px;
+  font-weight: 700;
 }
 
 .p-20-500 {

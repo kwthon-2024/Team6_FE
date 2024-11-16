@@ -1,4 +1,6 @@
 import React, { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
+
 import koLocale from "@fullcalendar/core/locales/ko";
 import dayGridPlugin from "@fullcalendar/daygrid";
 import interactionPlugin from "@fullcalendar/interaction";
@@ -15,6 +17,8 @@ import "./CustomFullCalendar.css";
 
 const ClubsCalendar = () => {
   const [selectedDate, setSelectedDate] = useState(null);
+
+  const navigate = useNavigate();
 
   useEffect(() => {
     const todayStr = new Date().toISOString().split("T")[0];
@@ -59,7 +63,14 @@ const ClubsCalendar = () => {
     <div className="clubs-calendar">
       <div className="j-content-between">
         <h1 className="p-20-700">동아리 행사</h1>
-        <img src={pencil} alt="수정" className="c-pointer" />
+        <img
+          src={pencil}
+          alt="수정"
+          className="c-pointer"
+          onClick={() => {
+            navigate("/pages/clubs/registerEv");
+          }}
+        />
       </div>
 
       <div className="calendar">
