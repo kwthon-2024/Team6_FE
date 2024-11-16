@@ -6,7 +6,7 @@ import "./SmallButton.css";
  * @param {boolean} props.selected - 선택에 따라 스타일 변경 flag
  * @returns
  */
-const SmallButton = ({ children, onClick, selected, style }) => {
+const SmallButton = ({ children, onClick, selected = false, style }) => {
   return (
     <button
       className={`small-button p-13-700 j-content-center a-items-center ${

@@ -1,0 +1,29 @@
+.clubs-calendar {
+  padding: 0 21px;
+  padding-top: 6.455vh;
+}
+
+.clubs-calendar .calendar {
+  margin-top: 3.638vh;
+
+  border-radius: 10px;
+  background: #eee;
+}
+
+.clubs-calendar .detail {
+  margin-top: 2.7vh;
+}
+
+.clubs-calendar .club-event-content {
+  margin-bottom: 1.174vh;
+
+  padding: 20px;
+
+  width: 350px;
+  height: 70px;
+  flex-shrink: 0;
+
+  box-sizing: border-box;
+  border-radius: 10px;
+  background: #eee;
+}
